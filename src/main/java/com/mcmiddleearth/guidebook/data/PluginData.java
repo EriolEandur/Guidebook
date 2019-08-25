@@ -35,6 +35,7 @@ import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import lombok.Getter;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -56,6 +57,9 @@ public class PluginData {
     
     @Getter
     private static final File dataFolder = GuidebookPlugin.getPluginInstance().getDataFolder();
+    
+    @Getter
+    private static boolean allOff;
     
     static {
         if(!GuidebookPlugin.getPluginInstance().getDataFolder().exists()) {
@@ -171,6 +175,13 @@ Logger.getGlobal().info("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     
     private static File getDataFile(File folder, String areaName) {
         return new File(folder, areaName+".yml");
+    }
+    
+    public static void setAllOff(boolean value) {
+        allOff = value;
+        Configuration config = GuidebookPlugin.getPluginInstance().getConfig();
+        config.set("allOff", value);
+        GuidebookPlugin.getPluginInstance().saveConfig();
     }
     
     public static void disable() {

@@ -4,7 +4,6 @@ version: ${project.version}
 description: sending information about places via chat messages
 load: POSTWORLD
 softdepend: [Multiverse-Core]
-api-version: 1.13
 
 commands:
     guidebook:

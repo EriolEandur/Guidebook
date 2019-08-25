@@ -46,7 +46,7 @@ public class GuidebookDescription extends GuidebookCommand{
                     return;
                 } else if(args[1].equalsIgnoreCase("save")) {
                     ItemStack handItem = player.getInventory().getItemInMainHand();
-                    if(!(handItem.getType().equals(Material.WRITABLE_BOOK)
+                    if(!(handItem.getType().equals(Material.BOOK_AND_QUILL)
                             || handItem.getType().equals(Material.WRITTEN_BOOK))) {
                         sendNoBookMessage(cs);
                         return;

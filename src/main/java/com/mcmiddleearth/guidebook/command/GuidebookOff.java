@@ -24,6 +24,11 @@ public class GuidebookOff extends GuidebookCommand{
     @Override
     protected void execute(CommandSender cs, String... args) {
         Player player=(Player)cs;
+        if(args.length>0 && player.isOp() && args[0].equals("all")) {
+            PluginData.setAllOff(true);
+            PluginData.getMessageUtil().sendInfoMessage(cs, "Guidebook messages disabled.");
+            return;
+        }
         PluginData.exclude(player);
         PluginData.getMessageUtil().sendInfoMessage(cs, "You will no longer receive info messages from Guidebook.");
     }

@@ -24,6 +24,11 @@ public class GuidebookOn extends GuidebookCommand{
     @Override
     protected void execute(CommandSender cs, String... args) {
         Player player = (Player)cs;
+        if(args.length>0 && player.isOp() && args[0].equals("all")) {
+            PluginData.setAllOff(false);
+            PluginData.getMessageUtil().sendInfoMessage(cs, "Guidebook messages enabled.");
+            return;
+        }
         PluginData.include(player);
         PluginData.getMessageUtil().sendInfoMessage(cs, "You will now receive info messages from Guidebook.");
     }

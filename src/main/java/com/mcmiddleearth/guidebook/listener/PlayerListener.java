@@ -33,6 +33,9 @@ public class PlayerListener implements Listener{
     
     @EventHandler
     public void playerMove(PlayerMoveEvent event) {
+        if(PluginData.isAllOff()) {
+            return;
+        }
         final Player player = event.getPlayer();
         if(PluginData.isExcluded(player)) {
             return;
